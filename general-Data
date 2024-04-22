@@ -16,19 +16,34 @@ la accion q describe algo que tiene que haer el reducer
 type: siempre obligatorio
 payload: menor cantidad de informacion para realizar la tarea
 Reducers
-simpre funcion que recibe 2 argumentos, siempre retorna un estado
-oldState: stado actual de la app.
-action: es el objeto plano que indica que hay que hacer.
+  es QUIEN va a recibir las acciones
+  siempre funcion que recibe 2 argumentos, siempre retorna un estado
+    oldState: stado actual de la app.
+    action: es el objeto plano que indica que hay que hacer.
 State
 solo lectura, no mutable, hay funciones prohibidas de JS
 Store
-tiene la funcion de disparar(dispach) las acciones
-es un objto q tiene las siguientes responsabilidades:
-contiene el estado de la app
-permite la lectura del estado via getState()
-permite crear u nuevo estado usando dispach(Action)
-permite notificar cambios via subscribe()
+  permite la lectura del estado
+  tiene la funcion de disparar(dispach) las acciones
+  es un objto q tiene las siguientes responsabilidades:
+  contiene el estado de la app
+  permite la lectura del estado via getState()
+  permite crear u nuevo estado usando dispach(Action)
+  permite notificar cambios via subscribe()
 
 ---
 
 seccion 3.
+---
+seccion 4 -
+ng g c contador/nieto --skip-tests -s
+
+store.select : selecciona solo el nodo que nos interesa
+createReducer: crea un nuevo reducer
+
+como hacer:
+  1-crear la accion en archivo.actions
+  2- si tiene parametros,
+    createAction('[Contador] Multiplicar',  props<{ numero: number }>());
+  3- ir al reducer y crear el nuevo reducer con createReducer
+  4-ir al componente y dispach --> this.store.dispatch(multiplicar({ numero: 2 }));
