@@ -1,0 +1,34 @@
+ng new --standalone false
+npm init
+
+instalar ts-node
+https://github.com/TypeStrong/ts-node
+correr un archivo ts
+ts-node main.ts
+
+redux: patron para el manejo de la información.
+ver 10, conceptos fundamentales
+la accion describe que se quiere hacer, no dispara eventos
+la accion combianada con el estado, a travez del reducer crean un nuevo estado
+Accion
+la unica fuente de informacion que se envia por interacciones de usuario o programa
+la accion q describe algo que tiene que haer el reducer
+type: siempre obligatorio
+payload: menor cantidad de informacion para realizar la tarea
+Reducers
+simpre funcion que recibe 2 argumentos, siempre retorna un estado
+oldState: stado actual de la app.
+action: es el objeto plano que indica que hay que hacer.
+State
+solo lectura, no mutable, hay funciones prohibidas de JS
+Store
+tiene la funcion de disparar(dispach) las acciones
+es un objto q tiene las siguientes responsabilidades:
+contiene el estado de la app
+permite la lectura del estado via getState()
+permite crear u nuevo estado usando dispach(Action)
+permite notificar cambios via subscribe()
+
+---
+
+seccion 3.
