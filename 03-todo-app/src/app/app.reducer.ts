@@ -1,8 +1,18 @@
-//nos dice como estan los states globales de la app.
+import { ActionReducerMap } from '@ngrx/store';
 
 import { Todo } from './todos/models/todo.model';
 
+import { todoReducer } from './todos/todo.reducer';
+
+import { filtrosValidos } from './filtro/filtro.actions';
+import { filtroReducer } from './filtro/filtro.reducer';
+
 export interface AppState {
   todos: Todo[];
-  //filter: filtrosValidos;
+  filtro: filtrosValidos;
 }
+
+export const appReducers: ActionReducerMap<AppState> = {
+  todos: todoReducer,
+  filtro: filtroReducer,
+};

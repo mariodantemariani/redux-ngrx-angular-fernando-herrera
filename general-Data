@@ -56,3 +56,5 @@ como hacer:
     createAction('[Contador] Multiplicar',  props<{ numero: number }>());
   3- ir al reducer y crear el nuevo reducer con createReducer
   4-ir al componente y dispach --> this.store.dispatch(multiplicar({ numero: 2 }));
+  5- crear app reducer si hay mas de un reducer
+  6- si son todos los states, usar directamente subscribe, si sé cual es usar .select('stateName')

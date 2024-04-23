@@ -1,19 +1,29 @@
 import { createAction, props } from '@ngrx/store';
 
+
+export const limpiarTodos = createAction('[TODO] Limpiar TODOS');
+
 export const crear = createAction(
-  '[TODO] crear TODO',
-  props<{ texto: string }>()
+    '[TODO] Crea Todo',
+    props<{ texto: string }>()
 );
-// export const decrementar = createAction('[Contador] Decrementar');
 
-// export const multiplicar = createAction(
-//   '[Contador] Multiplicar',
-//   props<{ numero: number }>()
-// );
+export const toggle = createAction(
+    '[TODO] Toggle Todo',
+    props<{ id: number }>()
+);
 
-// export const dividir = createAction(
-//   '[Contador] Dividir',
-//   props<{ numero: number }>()
-// );
+export const editar = createAction(
+    '[TODO] Editar Todo',
+    props<{ id: number, texto: string }>()
+);
 
-// export const reset = createAction('[Contador] Reset');
+export const borrar = createAction(
+    '[TODO] Borrar Todo',
+    props<{ id: number }>()
+);
+
+export const toggleAll = createAction(
+    '[TODO] Toggle TodoAll',
+    props<{ completado: boolean }>()
+);

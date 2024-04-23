@@ -7,7 +7,7 @@ import * as actions from '../todo.actions';
 @Component({
   selector: 'app-todo-add',
   templateUrl: './todo-add.component.html',
-  styleUrl: './todo-add.component.scss',
+  styleUrls: ['./todo-add.component.scss'],
 })
 export class TodoAddComponent implements OnInit {
   txtInput: FormControl;
