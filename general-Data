@@ -6,6 +6,15 @@ https://github.com/TypeStrong/ts-node
 correr un archivo ts
 ts-node main.ts
 
+instalar ngRx
+npm i @ngrx/store --save
+crear acciones y reducers
+intalar devtools
+pnpm i @ngrx/store-devtools --save
+
+
+
+
 redux: patron para el manejo de la información.
 ver 10, conceptos fundamentales
 la accion describe que se quiere hacer, no dispara eventos
