@@ -12,7 +12,9 @@ crear acciones y reducers
 intalar devtools
 pnpm i @ngrx/store-devtools --save
 
-
+---tags GIT
+ git tag -a v1.0.0 -m "templates listo"
+ git push --tags
 
 
 redux: patron para el manejo de la información.
