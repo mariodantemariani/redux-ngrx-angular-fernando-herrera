@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registroForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registroForm = this.fb.group({
@@ -20,6 +27,30 @@ export class RegisterComponent implements OnInit {
   }
 
   crearUsuario() {
-    console.log(this.registroForm.value);
+    if (this.registroForm.invalid) {
+      return;
+    }
+    Swal.fire({
+      title: 'Creando Usuario',
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    const { nombre, email, password } = this.registroForm.value;
+    this.authService
+      .crearUsuario(nombre, email, password)
+      .then((resp) => {
+        Swal.close();
+        this.router.navigate(['./']);
+      })
+      .catch((err) => {
+        Swal.close();
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.message,
+        });
+      });
   }
 }
