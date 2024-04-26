@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styles: ``
+  styles: ``,
 })
 export class DashboardComponent {
-
+  constructor() {}
 }

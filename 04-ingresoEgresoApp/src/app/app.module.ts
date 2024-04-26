@@ -18,6 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
+//firebase
+//import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
       })
     ),
     provideAuth(() => getAuth()),
+    provideFirebaseApp(() => initializeApp({"projectId":"ingreso-egreso-app-7e11c","appId":"1:276907960263:web:b9248c9cac7066971e5be2","storageBucket":"ingreso-egreso-app-7e11c.appspot.com","apiKey":"AIzaSyCZ-YrXhPYQjRqJ_bO0nerZtMuoyTLZkTU","authDomain":"ingreso-egreso-app-7e11c.firebaseapp.com","messagingSenderId":"276907960263","measurementId":"G-Y5TQG3XDLJ"})),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
