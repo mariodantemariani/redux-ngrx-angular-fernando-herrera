@@ -18,7 +18,7 @@ import {
   Unsubscribe,
   onSnapshot,
 } from 'firebase/firestore';
-import { AppState } from '../app.reducers';
+import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import * as authActions from '../auth/auth.actions';
 

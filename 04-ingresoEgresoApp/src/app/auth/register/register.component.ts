@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { AppState } from '../../app.reducers';
+import { AppState } from '../../app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import * as ui from '../../shared/ui.actions';

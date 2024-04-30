@@ -19,7 +19,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { appReducers } from './app.reducers';
+import { appReducers } from './app.reducer';
 
 //ngrx
 import { StoreModule } from '@ngrx/store';

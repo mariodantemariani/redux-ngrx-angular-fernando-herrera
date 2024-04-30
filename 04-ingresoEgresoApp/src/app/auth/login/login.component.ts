@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducers';
+import { AppState } from '../../app.reducer';
 import * as ui from '../../shared/ui.actions';
 import { Subscription } from 'rxjs';
 

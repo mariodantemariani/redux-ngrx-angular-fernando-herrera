@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { isLoading, stopLoading } from './ui.actions';
 
 export interface State {
-  isLoading: boolean; //String;
+  isLoading: boolean;
 }
 
 export const initialState: State = {
@@ -13,7 +13,6 @@ const _uiReducer = createReducer(
   initialState,
 
   on(isLoading, (state) => ({ ...state, isLoading: true })),
-
   on(stopLoading, (state) => ({ ...state, isLoading: false }))
 );
 
