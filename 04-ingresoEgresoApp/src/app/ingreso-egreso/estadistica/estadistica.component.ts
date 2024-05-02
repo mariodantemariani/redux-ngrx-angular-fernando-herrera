@@ -5,6 +5,7 @@ import { IngresoEgreso } from '../../models/ingreso-egreso.model';
 
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -22,17 +23,9 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
     labels: this.doughnutChartLabels,
     datasets: [{ data: [0, 0] }],
   };
-  //{
-  //   labels: this.doughnutChartLabels,
-  //   datasets: [
-  //     { data: [350, 450, 100] },
-  //     { data: [50, 150, 120] },
-  //     { data: [250, 130, 70] },
-  //   ],
-  // };
   public doughnutChartType: ChartType = 'doughnut';
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppStateWithIngreso>) {}
 
   ngOnInit(): void {
     this.store.select('ingresoEgreso').subscribe(({ items }) => {
