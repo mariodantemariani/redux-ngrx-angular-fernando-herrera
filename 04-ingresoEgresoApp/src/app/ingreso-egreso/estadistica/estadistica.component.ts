@@ -3,9 +3,8 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
 
-import { ChartData, ChartEvent, ChartType } from 'chart.js';
-
 import { BaseChartDirective } from 'ng2-charts';
+import { ChartData, ChartEvent, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-estadistica',
@@ -17,21 +16,20 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   egresos: number = 0;
   totalIngresos: number = 0;
   totalEgresos: number = 0;
-
   // Doughnut
-  public doughnutChartLabels: string[] = [
-    'Download Sales',
-    'In-Store Sales',
-    'Mail-Order Sales',
-  ];
+  public doughnutChartLabels: string[] = ['Ingresos', 'Egresos', ''];
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
-    datasets: [
-      { data: [350, 450, 100] },
-      { data: [50, 150, 120] },
-      { data: [250, 130, 70] },
-    ],
+    datasets: [{ data: [0, 0] }],
   };
+  //{
+  //   labels: this.doughnutChartLabels,
+  //   datasets: [
+  //     { data: [350, 450, 100] },
+  //     { data: [50, 150, 120] },
+  //     { data: [250, 130, 70] },
+  //   ],
+  // };
   public doughnutChartType: ChartType = 'doughnut';
 
   constructor(private store: Store<AppState>) {}
@@ -45,6 +43,11 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {}
 
   generarEstadisticas(items: IngresoEgreso[]) {
+    this.ingresos = 0;
+    this.egresos = 0;
+    this.totalIngresos = 0;
+    this.totalEgresos = 0;
+
     for (const item of items) {
       if (item.tipo === 'ingreso') {
         this.totalIngresos += item.monto;
@@ -54,6 +57,11 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
         this.egresos++;
       }
     }
+
+    this.doughnutChartData = {
+      labels: this.doughnutChartLabels,
+      datasets: [{ data: [this.totalIngresos, this.totalEgresos] }],
+    };
   }
   // events
   public chartClicked({

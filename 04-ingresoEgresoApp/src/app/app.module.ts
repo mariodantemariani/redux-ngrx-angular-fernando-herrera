@@ -31,6 +31,8 @@ import { OrdenIngresoPipeTsPipe } from './pipes/orden-ingreso.pipe.ts.pipe';
 //import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BaseChartDirective } from 'ng2-charts';
 
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,7 @@ import { BaseChartDirective } from 'ng2-charts';
     provideFirestore(() => getFirestore()),
     BaseChartDirective,
   ],
-  providers: [],
+  providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
