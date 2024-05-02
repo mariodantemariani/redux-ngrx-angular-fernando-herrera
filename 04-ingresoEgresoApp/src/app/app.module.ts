@@ -25,9 +25,11 @@ import { appReducers } from './app.reducer';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment.development';
+import { OrdenIngresoPipeTsPipe } from './pipes/orden-ingreso.pipe.ts.pipe';
 
 //firebase
 //import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { BaseChartDirective } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -41,28 +43,18 @@ import { environment } from '../environments/environment.development';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    OrdenIngresoPipeTsPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    provideFirebaseApp(() =>
-      initializeApp({
-        projectId: 'ingreso-egreso-app-7e11c',
-        appId: '1:276907960263:web:b9248c9cac7066971e5be2',
-        storageBucket: 'ingreso-egreso-app-7e11c.appspot.com',
-        apiKey: 'AIzaSyCZ-YrXhPYQjRqJ_bO0nerZtMuoyTLZkTU',
-        authDomain: 'ingreso-egreso-app-7e11c.firebaseapp.com',
-        messagingSenderId: '276907960263',
-        measurementId: 'G-Y5TQG3XDLJ',
-      })
-    ),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    provideAuth(() => getAuth()),
     provideFirebaseApp(() =>
       initializeApp({
         projectId: 'ingreso-egreso-app-7e11c',
@@ -74,8 +66,10 @@ import { environment } from '../environments/environment.development';
         measurementId: 'G-Y5TQG3XDLJ',
       })
     ),
+
+    provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    StoreModule.forRoot(appReducers),
+    BaseChartDirective,
   ],
   providers: [],
   bootstrap: [AppComponent],

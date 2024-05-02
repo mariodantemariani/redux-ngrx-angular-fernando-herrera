@@ -21,12 +21,20 @@ import {
 import { AppState } from '../app.reducer';
 import { Store } from '@ngrx/store';
 import * as authActions from '../auth/auth.actions';
+import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userUnsubscribe!: Unsubscribe;
+
+  private _user!: Usuario;
+
+  get user() {
+    return { ...this._user };
+  }
+
   constructor(
     public auth: Auth,
     private firestore: Firestore,
@@ -41,6 +49,7 @@ export class AuthService {
           (docUser: any) => {
             let data: any = docUser.data();
             let user = Usuario.fromFirebase(data);
+            this._user = user;
             this.store.dispatch(authActions.setUser({ user }));
           },
           (err) => {
@@ -50,6 +59,7 @@ export class AuthService {
       } else {
         this.userUnsubscribe ? this.userUnsubscribe() : null;
         this.store.dispatch(authActions.unSetUser());
+        this.store.dispatch(ingresoEgresoActions.unSetItems());
       }
     });
   }
