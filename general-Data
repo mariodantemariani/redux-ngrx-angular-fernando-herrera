@@ -60,3 +60,24 @@ como hacer:
   4-ir al componente y dispach --> this.store.dispatch(multiplicar({ numero: 2 }));
   5- crear app reducer si hay mas de un reducer
   6- si son todos los states, usar directamente subscribe, si sé cual es usar .select('stateName')
+  
+- effects: 
+150-intro a los effects
+Una accion puede ser escuchada por un efecto. El efecto puede ser una accion o un servicio.
+Luego cuando la tarea finaliza, el efecto notifica a la accion y la accion al reducer.
+El efecto dispara una nueva acción (dispach/ ngrx/store).
+El efecto no tiene acceso al store, no tiene acceso al state.
+comunicarse fuera del ecosistema de Angular (httpclient).
+
+<ver effects-diagram.png>
+1- añadir la accion para 1 item de la lista (si es necesario, crear el file).
+2- crear el reducer.
+3- actualizar el appReducer.
+4- hacer el dispach de la accion.
+5- crear el effect.
+6- crear el index en el effect.
+7- usarlo en el component adecuado, algo asi quedaria
+    this.store.select('usuario').subscribe( ({ user, loading, error }) => {
+      this.usuario = user;
+    });
+8- cuidado con el nombre de los actions (si tengo un error, pasa y agarra otro action)
